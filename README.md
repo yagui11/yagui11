@@ -20,3 +20,25 @@ int main()
 printf("%d\n", k);
 return 0;
 }
+//以下为简化算法后的代码
+#include<stdio.h>
+#include<math.h>
+int main() {
+	int i, j;
+	int k = 0;
+	for (i = 101; i < 996; i+=2) //结尾是质数的才有可能是质数，能极大降低检测的质数数量
+	{
+		for (j = 2; j < sqrt(i); j++) //只需要小于被除数的开方即可，约数是成对出现的，比开方都大的数据也进行计算就无意义了
+		{
+			if (i % j == 0) 
+			{
+				break;
+			}
+		}if (j > sqrt(i)) 
+		{
+			k++;
+		}
+	}
+	printf("%d\n", k+1);
+	return 0;
+}
